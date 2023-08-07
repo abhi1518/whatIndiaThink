@@ -43,7 +43,7 @@ export const Home = () => {
         Blogs
       </button><br/>
       <button type="button" onClick={navigateToOtherPages} style={{justifyContent:"center",margin:"auto", width:"50%"}} class="btn btn-secondary btn-lg btn-block">
-        Polles
+        Poll
       </button>
       </div>
       {/* <Card /> */}
