@@ -89,7 +89,7 @@ export const Card = () => {
               </button>
             {/* <button onClick={closePopup}>Close</button> */}
           </div>
-        </div>
+        </div> 
       )}
         <section className="blog">
           <div className="container grid3">

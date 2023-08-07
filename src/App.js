@@ -14,6 +14,7 @@ import { RegsiterPassword } from "./pages/login/RegsiterPassword"
 import polles from "./components/Polles/polles"
 import { DetailsPolles } from "./pages/details/DetailsPolles"
 import { Contact } from "./pages/contact/Regsiter"
+import { About } from "./pages/home/About"
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
           <Route exact path='/detail/:id' component={DetailsPolles} />
           <Route exact path='/account' component={Account} />
           <Route exact path='/create' component={Create} />
+          <Route exact path='/about' component={About} />
         </Switch>
         <Footer />
       </Router>

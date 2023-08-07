@@ -72,7 +72,7 @@ export const Header = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto text-center">
               <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/about">
                   About
                 </a>
               </li>
@@ -83,7 +83,7 @@ export const Header = () => {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/polles">
-                  Polle
+                  Poll
                 </a>
               </li>
               <li class="nav-item">
@@ -113,8 +113,10 @@ export const Header = () => {
              
             </div>
           </div>
+         
         </nav>
         <hr />
+        
       </header>
     </>
   );
