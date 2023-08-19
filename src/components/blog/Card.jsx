@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { blogGet } from "../../api";
 
 export const Card = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [userData, setUserData] = useState([]);
 
@@ -56,16 +55,17 @@ export const Card = () => {
   };
 
   return (
-   
     <>
       <div className="card-display">
-      <button onClick={openPopup} className="floating-button">+</button>
-    {isOpen && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>Categorey</h2>
-            {/* <p>This is the content of the popup.</p> */}
-            {checkboxes.map((checkbox) => (
+        <button onClick={openPopup} className="floating-button">
+          +
+        </button>
+        {isOpen && (
+          <div className="popup">
+            <div className="popup-content">
+              <h2>Categorey</h2>
+              {/* <p>This is the content of the popup.</p> */}
+              {checkboxes.map((checkbox) => (
                 <div>
                   <label key={checkbox.id}>
                     <input
@@ -80,17 +80,18 @@ export const Card = () => {
                   <br />
                 </div>
               ))}
-              <button  onClick={closePopup}
+              <button
+                onClick={closePopup}
                 style={{ marginLeft: "10px" }}
                 type="button"
                 class="btn btn-primary"
               >
                 Filtter
               </button>
-            {/* <button onClick={closePopup}>Close</button> */}
+              {/* <button onClick={closePopup}>Close</button> */}
+            </div>
           </div>
-        </div> 
-      )}
+        )}
         <section className="blog">
           <div className="container grid3">
             {userData.map((item) => (
@@ -108,8 +109,8 @@ export const Card = () => {
                   </Link>
                   <p>{item.blogDescription.slice(0, 180)}...</p>
                   <div className="date">
-                  <Link to={`/details/${item.id}`} className="link">
-                    <button>Read More</button>
+                    <Link to={`/details/${item.id}`} className="link">
+                      <button>Read More</button>
                     </Link>
                   </div>
                 </div>

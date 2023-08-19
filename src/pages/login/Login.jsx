@@ -51,7 +51,8 @@ export const Login = () => {
             <input type='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <span>Password</span>
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <button type="submit" className='button'>Log in</button>
+            <a href="/" className="text-right">Forgot Password</a>
+            <button type="submit" className='button mt-5'>Log in</button>
           </form>
         </div>
       </section>

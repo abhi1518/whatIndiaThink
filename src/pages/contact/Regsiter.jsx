@@ -25,8 +25,8 @@ export const Contact = () => {
 
       const result = await contactUs(formData);
       console.log(result);
-      if(result.success){
-        localStorage.setItem('isLogin', true);
+      if(result.status){
+        // localStorage.setItem('isLogin', true);
         window.location.href = '/';
       }
       setStatus(result);
@@ -49,11 +49,11 @@ export const Contact = () => {
           <form onSubmit={handleSubmit}>
             <span>Name</span>
             <input type='text' value={name} onChange={(e) => setName(e.target.value)} required />
-            <span>Mobile No.</span>
-            <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <span>Email address</span>
+            <span>Mobile No. </span>
             <input type='text' value={mobile} onChange={(e) => setMobile(e.target.value)} required />
-            <span>Address</span>
+            <span>Email address</span>
+            <input type='text' value={email} onChange={(e) =>  setEmail(e.target.value)} required />
+            <span>Pin Code</span>
             <input type='text' value={address} onChange={(e) => setAddress(e.target.value)} required />
             <span>Message</span>
             <input type='text' value={message} onChange={(e) => setMessage(e.target.value)} required />
