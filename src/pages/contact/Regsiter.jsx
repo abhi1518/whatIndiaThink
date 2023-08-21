@@ -10,6 +10,7 @@ export const Contact = () => {
   const [mobile, setMobile] = useState('');
   const [address, setAddress] = useState('');
   const [message, setMessage] = useState('');
+  const [pin, setPin] = useState('');
   
   const [Status, setStatus] = useState('');
   const handleSubmit = async (event) => {
@@ -22,6 +23,7 @@ export const Contact = () => {
       formData.append('mobile', mobile);
       formData.append('address', address );
       formData.append('message', message);
+      formData.append('pincode', pin);
 
       const result = await contactUs(formData);
       console.log(result);
@@ -53,8 +55,10 @@ export const Contact = () => {
             <input type='text' value={mobile} onChange={(e) => setMobile(e.target.value)} required />
             <span>Email address</span>
             <input type='text' value={email} onChange={(e) =>  setEmail(e.target.value)} required />
+            <span>Address</span>
+            <input type='text' value={address} onChange={(e) =>  setAddress(e.target.value)} required />
             <span>Pin Code</span>
-            <input type='text' value={address} onChange={(e) => setAddress(e.target.value)} required />
+            <input type='text' value={pin} onChange={(e) => setPin(e.target.value)} required />
             <span>Message</span>
             <input type='text' value={message} onChange={(e) => setMessage(e.target.value)} required />
             <button type="submit" className='button'>Proceed</button>

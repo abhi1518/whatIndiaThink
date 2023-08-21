@@ -2,10 +2,10 @@ import React from "react";
 import "./login.css";
 import back from "../../assets/images/my-account.jpg";
 import { useState, useEffect } from 'react';
-import { registerPassword } from '../../api';
+import { forgetPassword } from '../../api';
 import { useHistory } from 'react-router-dom';
 
-export const RegsiterPassword = () => {
+export const ForgetPassword = () => {
   const history = useHistory();
   const [password, setPassword] = useState('');
   const [userid, setUserid] = useState('');
@@ -17,10 +17,10 @@ export const RegsiterPassword = () => {
 
     try {
       const formData = new FormData();
-      formData.append('userid', userid);
+      formData.append('email', userid);
       formData.append('password', password );
 
-      const result = await registerPassword(formData);
+      const result = await forgetPassword(formData);
       console.log(result);
       if(result.status){
         history.push('/login');
@@ -34,7 +34,7 @@ export const RegsiterPassword = () => {
   };
 
   useEffect(() => { 
-    setUserid(localStorage.getItem('userid'));
+    setUserid(localStorage.getItem('email'));
   }, []);
 
 
@@ -54,7 +54,7 @@ export const RegsiterPassword = () => {
             <span>Password</span>
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <span>Conform Password</span>
-            <input type="password" required />
+            <input type="password" placeholder="Conform Password" required />
             <button type="submit" className="button">Proceed</button>
           </form>
         </div>

@@ -4,14 +4,17 @@ import back from "../../assets/images/my-account.jpg"
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { registerLogin } from '../../api';
+import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
-
+  const history = useHistory();
   const [isLogin, setIsLogin] = useState(false);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [userId, setUserId] = useState('');
   
   const [status, setStatus] = useState('');
+  const [inCorrect, setIncorreact] = useState(false);
  
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -23,11 +26,22 @@ export const Login = () => {
 
       const result = await registerLogin(formData);
       console.log(result);
+      // setUserId(result.data.userid);
+      // console
       if(result.success){
+        setStatus(result.data);
+        setUserId(status.userid);
         localStorage.setItem('isLogin', true);
-        window.location.href = '/';
+        localStorage.setItem('userId', status);
+        history.push('/');
+        // window.location.href = '/';
+      }else {
+        setIncorreact(true);
+        console.log(inCorrect);
       }
-      setStatus(result);
+      
+      console.log(status);
+      // setUserId(status.data.userid);
     } catch (error) {
       console.error('Error registering user:', error);
       setStatus('Error registering user.');
@@ -51,7 +65,9 @@ export const Login = () => {
             <input type='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <span>Password</span>
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <a href="/" className="text-right">Forgot Password</a>
+            {inCorrect == true ? <><p style={{color:"red"}}>Email or Password not match</p></> : <></>}
+            {/* <p>kjkjjn</p> */}
+            <Link to="/forget/otp" className="text-right">Forgot Password</Link>
             <button type="submit" className='button mt-5'>Log in</button>
           </form>
         </div>

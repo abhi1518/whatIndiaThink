@@ -96,20 +96,24 @@ export const Card = () => {
           <div className="container grid3">
             {userData.map((item) => (
               <div className="box boxItems" key={item.id}>
-                {/* <div className="img">
-                  <img src={item.cover} alt="" />
-                </div> */}
+                <div className="img">
+                  <img src={item.blogImage} alt="" />
+                </div>
                 <div className="details">
                   <div className="tag">
                     <AiOutlineTags className="icon" />
-                    <a href="/">{item.hastag}</a>
+                    <Link to={`/details/${item.blogid}`} className="link">
+                      {/* <button>Read More</button> */}
+                      {item.hastag}
+                    </Link>
+                    <a href="/"></a>
                   </div>
-                  <Link to={`/details/${item.id}`} className="link">
+                  <Link to={`/details/${item.blogid}`} className="link">
                     <h3>{item.blogTitle}</h3>
                   </Link>
                   <p>{item.blogDescription.slice(0, 180)}...</p>
                   <div className="date">
-                    <Link to={`/details/${item.id}`} className="link">
+                    <Link to={`/details/${item.blogid}`} className="link">
                       <button>Read More</button>
                     </Link>
                   </div>

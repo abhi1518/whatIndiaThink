@@ -3,10 +3,10 @@ import "./login.css"
 import back from "../../assets/images/my-account.jpg"
 import { Router } from 'react-router-dom';
 import { useState } from 'react';
-import { registerUser } from '../../api';
+import { forgetOtp } from '../../api';
 import { useHistory } from 'react-router-dom';
 
-export const Regsiter = () => {
+export const ForgetOtp = () => {
   const history = useHistory();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -20,17 +20,17 @@ export const Regsiter = () => {
 
     try {
       const formData = new FormData();
-      formData.append('name', name);
+      // formData.append('name', name);
       formData.append('email', email);
-      formData.append('mobile', mobile);
-      formData.append('address', address);
+      // formData.append('mobile', mobile);
+      // formData.append('address', address);
 
-      const result = await registerUser(formData);
+      const result = await forgetOtp(formData);
       console.log(result);
-      localStorage.setItem('userid', result.userid);
-      if(result.status){
+      localStorage.setItem('email', email);
+      if(result.success ){
         // window.location.href = '/register/otp';
-        history.push('/register/otp');
+        history.push('/forget/verifyotp');
       }
       setStatus(result);
     } catch (error) {
@@ -55,14 +55,14 @@ export const Regsiter = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-          <span>Name</span>
+          {/* <span>Name</span>
             <input type='text' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
             <span>Mobile No.</span>
-            <input type='tel' placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)}  required />
+            <input type='tel' placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)}  required /> */}
             <span>Email</span>
             <input type='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <span>Address</span>
-            <input type='text' placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} required />
+            {/* <span>Address</span>
+            <input type='text' placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} required /> */}
            
             <button type="submit" className='button'>Proceed</button>
           </form>

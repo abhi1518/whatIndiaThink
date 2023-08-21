@@ -15,6 +15,9 @@ import polles from "./components/Polles/polles"
 import { DetailsPolles } from "./pages/details/DetailsPolles"
 import { Contact } from "./pages/contact/Regsiter"
 import { About } from "./pages/home/About"
+import { ForgetOtp } from "./pages/login/ForgetOtp"
+import { ForgetVerifyOtp } from "./pages/login/ForgetVerifyOtp"
+import { ForgetPassword } from "./pages/login/ForgetPassword"
 
 const App = () => {
   return (
@@ -35,6 +38,9 @@ const App = () => {
           <Route exact path='/account' component={Account} />
           <Route exact path='/create' component={Create} />
           <Route exact path='/about' component={About} />
+          <Route exact path='/forget/otp' component={ForgetOtp} />
+          <Route exact path='/forget/verifyotp' component={ForgetVerifyOtp} />
+          <Route exact path='/forget/password' component={ForgetPassword} />
         </Switch>
         <Footer />
       </Router>

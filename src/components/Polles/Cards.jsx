@@ -96,7 +96,7 @@ export const Card = () => {
               <div className='details'>
                 <div className='tag'>
                   <AiOutlineTags className='icon' />
-                  <a href='/'>{item.hastag}</a>
+                  <Link to={`/detail/${item.blogid}`}>{item.hastag}</Link>
                 </div>
                 <Link to={`/detail/${item.blogid}`} className='link'>
                   <h3>{item.blogTitle}</h3>

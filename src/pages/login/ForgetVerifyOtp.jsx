@@ -2,10 +2,10 @@ import React from "react"
 import "./login.css"
 import back from "../../assets/images/my-account.jpg"
 import { useState, useEffect } from 'react';
-import { registerOtp } from '../../api';
+import { forgetVerifyOtp } from '../../api';
 import { useHistory } from 'react-router-dom';
 
-export const RegsiterOtp = () => {
+export const ForgetVerifyOtp = () => {
   const history = useHistory();
   const [otp, setOtp] = useState('');
   const [userid, setUserid] = useState('');
@@ -17,13 +17,13 @@ export const RegsiterOtp = () => {
 
     try {
       const formData = new FormData();
-      formData.append('userid', userid);
+      formData.append('email', userid);
       formData.append('otp', otp);
 
-      const result = await registerOtp(formData);
+      const result = await forgetVerifyOtp(formData);
       console.log(result);
       if(result.success){
-        history.push('/register/password');
+        history.push('/forget/password');
         // window.location.href = '/register/password';
       }
       setStatus(result);
@@ -34,7 +34,7 @@ export const RegsiterOtp = () => {
   };
 
   useEffect(() => { 
-    setUserid(localStorage.getItem('userid'));
+    setUserid(localStorage.getItem('email'));
   }, []);
 
 

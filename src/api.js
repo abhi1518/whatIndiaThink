@@ -25,6 +25,21 @@ export const registerUser = async (formData) => {
   }
 };
 
+export const forgetOtp = async (formData) => {
+  try {
+    const requestOptions = {
+      method: 'post',
+      url: `${API_BASE_URL}/newregister/forgetPassword`,
+      data: formData,
+    };
+
+    const response = await axios(requestOptions);
+    return handleResponse(response);
+  } catch (error) {
+    throw new Error('Error registering user.');
+  }
+};
+
 export const registerOtp = async (formData) => {
     try {
       const requestOptions = {
@@ -40,11 +55,56 @@ export const registerOtp = async (formData) => {
     }
   };
 
+  export const forgetVerifyOtp = async (formData) => {
+    try {
+      const requestOptions = {
+        method: 'post',
+        url: `${API_BASE_URL}/newregister/fPasswordotp`,
+        data: formData,
+      };
+  
+      const response = await axios(requestOptions);
+      return handleResponse(response);
+    } catch (error) {
+      throw new Error('Error registering user.');
+    }
+  };
+
   export const registerPassword = async (formData) => {
     try {
       const requestOptions = {
         method: 'post',
         url: `${API_BASE_URL}/newregister/password`,
+        data: formData,
+      };
+  
+      const response = await axios(requestOptions);
+      return handleResponse(response);
+    } catch (error) {
+      throw new Error('Error registering user.');
+    }
+  };
+
+  export const forgetPassword = async (formData) => {
+    try {
+      const requestOptions = {
+        method: 'post',
+        url: `${API_BASE_URL}/newregister/fpasswordset`,
+        data: formData,
+      };
+  
+      const response = await axios(requestOptions);
+      return handleResponse(response);
+    } catch (error) {
+      throw new Error('Error registering user.');
+    }
+  };
+
+  export const registerVote = async (formData) => {
+    try {
+      const requestOptions = {
+        method: 'post',
+        url: `${API_BASE_URL}/pole/answer`,
         data: formData,
       };
   
