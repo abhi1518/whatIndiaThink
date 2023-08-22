@@ -115,6 +115,21 @@ export const registerOtp = async (formData) => {
     }
   };
 
+  export const registerComment = async (formData) => {
+    try {
+      const requestOptions = {
+        method: 'post',
+        url: `${API_BASE_URL}/comment/usercomment`,
+        data: formData,
+      };
+  
+      const response = await axios(requestOptions);
+      return handleResponse(response);
+    } catch (error) {
+      throw new Error('Error registering user.');
+    }
+  };
+
   export const registerLogin = async (formData) => {
     try {
       const requestOptions = {

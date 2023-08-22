@@ -16,6 +16,7 @@ export const DetailsPolles = () => {
   const [Question, setQuestion] = useState("");
   const [selectedOption, setSelectedOption] = useState(""); 
   const [comment, setComment] = useState("");
+  const [value, setValue] = useState("");
   console.log(id);
 
   const handleSubmit = async (event) => {
@@ -44,13 +45,17 @@ export const DetailsPolles = () => {
 
       const result = await registerVote(formData);
       console.log(result);
-      // localStorage.setItem('userid', result.userid);
       if(result.status){
-        // window.location.href = '/register/otp';
-        history.push('/');
+        // if(value == true){
+          history.push('/');
+        // } else {
+        //   history.push('/login');
+        // }
+      } else{
+        history.push('/login');
       }
-      // setStatus(result);
     } catch (error) {
+      history.push('/login');
       console.error('Error registering user:', error);
       // setStatus('Error registering user.');
     }
@@ -69,6 +74,10 @@ export const DetailsPolles = () => {
     let blogs = blog.find((blogs) => blogs.id === parseInt(id));
     if (blogs) {
       setBlogs(blogs);
+    }
+    const storedValue = localStorage.getItem("isLogin");
+    if (storedValue) {
+      setValue(storedValue);
     }
   }, []);
 
@@ -99,7 +108,7 @@ export const DetailsPolles = () => {
                       </label>
                     </div>
                     <div className="ml-5">
-                      <p>no. of votes {item.voting}</p>
+                      <p>no. of votes {Math.round(item.voting)} %</p>
                     </div>
                   </div>
                   <br />

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 export const Header = () => {
   const [value, setValue] = useState("");
+  const [name, setName] = useState("");
   const history = useHistory();
 
   // Load data from local storage when the component mounts
@@ -12,6 +13,10 @@ export const Header = () => {
     const storedValue = localStorage.getItem("isLogin");
     if (storedValue) {
       setValue(storedValue);
+    }
+    const storedName = localStorage.getItem("name");
+    if (storedName) {
+      setName(storedName);
     }
   }, []);
   const navigateToOtherPages = () => {
@@ -71,6 +76,7 @@ export const Header = () => {
             <div className="text-center" style={{ margin: "auto" }}>
               {value ? 
                 <>
+                {/* <p>Hi {name}</p> */}
                   <button
                     class="btn btn-outline-success my-2 my-sm-0"
                     onClick={navigateToLogOut}

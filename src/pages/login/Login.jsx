@@ -12,7 +12,7 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [userId, setUserId] = useState('');
-  
+  const [name, setName] = useState('');
   const [status, setStatus] = useState('');
   const [inCorrect, setIncorreact] = useState(false);
  
@@ -26,14 +26,20 @@ export const Login = () => {
 
       const result = await registerLogin(formData);
       console.log(result);
+      setUserId(result.userid);
+      setName(result.name);
+      localStorage.setItem('userId', result.userid);
+        localStorage.setItem('name', result.name);
       // setUserId(result.data.userid);
-      // console
+      console.log(userId);
       if(result.success){
         setStatus(result.data);
-        setUserId(status.userid);
+        
+        console.log(result.userid);
         localStorage.setItem('isLogin', true);
-        localStorage.setItem('userId', status);
-        history.push('/');
+        
+        // history.push('/');
+        // window.location.reload();
         // window.location.href = '/';
       }else {
         setIncorreact(true);
@@ -43,6 +49,8 @@ export const Login = () => {
       console.log(status);
       // setUserId(status.data.userid);
     } catch (error) {
+      setIncorreact(true);
+        console.log(inCorrect);
       console.error('Error registering user:', error);
       setStatus('Error registering user.');
     }

@@ -111,7 +111,8 @@ export const Card = () => {
                   <Link to={`/details/${item.blogid}`} className="link">
                     <h3>{item.blogTitle}</h3>
                   </Link>
-                  <p>{item.blogDescription.slice(0, 180)}...</p>
+                  {item.blogDescription != null ? <><p>{item.blogDescription.slice(0, 180)}...</p></>: <></>}
+                  
                   <div className="date">
                     <Link to={`/details/${item.blogid}`} className="link">
                       <button>Read More</button>

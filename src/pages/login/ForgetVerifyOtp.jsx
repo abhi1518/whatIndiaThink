@@ -10,7 +10,7 @@ export const ForgetVerifyOtp = () => {
   const [otp, setOtp] = useState('');
   const [userid, setUserid] = useState('');
   const [status, setStatus] = useState('');
- 
+  const [inCorrect, setIncorreact] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -25,9 +25,14 @@ export const ForgetVerifyOtp = () => {
       if(result.success){
         history.push('/forget/password');
         // window.location.href = '/register/password';
+      } else {
+        setIncorreact(true);
+        console.log(inCorrect);
       }
       setStatus(result);
     } catch (error) {
+      setIncorreact(true);
+        console.log(inCorrect);
       console.error('Error registering user:', error);
       setStatus('Error registering user.');
     }
@@ -54,7 +59,7 @@ export const ForgetVerifyOtp = () => {
           <form onSubmit={handleSubmit}>
           <span>Enter Otp!</span>
             <input type='text' placeholder="Otp" value={otp} onChange={(e) => setOtp(e.target.value)} required />
-           
+            {inCorrect == true ? <><p style={{color:"red"}}>Invalid Otp</p></> : <></>}
             <button type="submit" className='button'>Proceed</button>
           </form>
         </div>
