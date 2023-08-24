@@ -1,6 +1,6 @@
 import React from "react"
 import "./login.css"
-import back from "../../assets/images/my-account.jpg"
+import back from "../../assets/images/forget.jpeg"
 import { Router } from 'react-router-dom';
 import { useState } from 'react';
 import { forgetOtp } from '../../api';
@@ -46,12 +46,8 @@ export const ForgetOtp = () => {
     <>
       <section className='login'>
         <div className='container'>
-          <div className='backImg'>
-            <img src={back} alt='' />
-            <div className='text'>
-              <h3>Register</h3>
-              <h1>My account</h1>
-            </div>
+        <div>
+            <img  src={back} alt='' className="mt-3 back-ground-image" />
           </div>
 
           <form onSubmit={handleSubmit}>

@@ -28,52 +28,52 @@ export const nav = [
 export const category = [
   {
     id: 1,
-    category: "Life",
+    category: "Political",
     title: "Stay Calm And Surf",
     cover: "../images/category/ca1.png",
   },
   {
     id: 2,
-    category: "Fashion",
+    category: "Business",
     title: "Becoming a Dragonfly",
     cover: "../images/category/ca2.png",
   },
   {
     id: 3,
-    category: "Travel",
+    category: "Sports",
     title: "There's always light at the end of the tunnel",
     cover: "../images/category/ca3.png",
   },
   {
     id: 4,
-    category: "Sport",
+    category: "Environment & Health",
     title: "Stay Calm And Surf",
     cover: "../images/category/ca4.png",
   },
   {
     id: 5,
-    category: "Fun",
+    category: "Entertainment",
     title: "There's always light at the end of the tunnel",
     cover: "../images/category/ca5.png",
   },
   {
     id: 6,
-    category: "Health",
+    category: "Generic",
     title: "Becoming a Dragonfly",
     cover: "../images/category/ca6.png",
   },
-  {
-    id: 7,
-    category: "Business",
-    title: "Stay Calm And Surf",
-    cover: "../images/category/ca7.png",
-  },
-  {
-    id: 8,
-    category: "Technology",
-    title: "There's always light at the end of the tunnel",
-    cover: "../images/category/ca8.png",
-  },
+  // {
+  //   id: 7,
+  //   category: "Business",
+  //   title: "Stay Calm And Surf",
+  //   cover: "../images/category/ca7.png",
+  // },
+  // {
+  //   id: 8,
+  //   category: "Technology",
+  //   title: "There's always light at the end of the tunnel",
+  //   cover: "../images/category/ca8.png",
+  // },
 ]
 export const blog = [
   {

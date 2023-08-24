@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.css";
-import back from "../../assets/images/my-account.jpg";
+import back from "../../assets/images/forget.jpeg";
 import { useState, useEffect } from 'react';
 import { forgetPassword } from '../../api';
 import { useHistory } from 'react-router-dom';
@@ -42,12 +42,8 @@ export const ForgetPassword = () => {
     <>
       <section className="login">
         <div className="container">
-          <div className="backImg">
-            <img src={back} alt="" />
-            <div className="text">
-              <h3>Register</h3>
-              <h1>My account</h1>
-            </div>
+        <div>
+            <img  src={back} alt='' className="mt-3 back-ground-image" />
           </div>
 
           <form onSubmit={handleSubmit}>

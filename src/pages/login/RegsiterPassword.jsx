@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.css";
-import back from "../../assets/images/my-account.jpg";
+import back from "../../assets/images/register.jpeg"
 import { useState, useEffect } from 'react';
 import { registerPassword } from '../../api';
 import { useHistory } from 'react-router-dom';
@@ -40,22 +40,18 @@ export const RegsiterPassword = () => {
 
   return (
     <>
-      <section className="login">
+      <section className="login mt-3">
         <div className="container">
-          <div className="backImg">
-            <img src={back} alt="" />
-            <div className="text">
-              <h3>Register</h3>
-              <h1>My account</h1>
-            </div>
+        <div>
+            <img src={back} alt='' className="back-ground-image"/>
           </div>
 
           <form onSubmit={handleSubmit}>
             <span>Password</span>
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             <span>Conform Password</span>
-            <input type="password" required />
-            <button type="submit" className="button">Proceed</button>
+            <input type="password" placeholder="Conform Password" required />
+            <button type="submit"  className="button">Proceed</button>
           </form>
         </div>
       </section>

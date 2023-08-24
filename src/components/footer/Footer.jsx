@@ -8,7 +8,7 @@ export const Footer = () => {
     <>
       <footer className='boxItems'>
         <div className='container flex'>
-          <p>What India Think - All right reserved - Design & Developed by Abhi & Raghu</p>
+          <p style={{fontSize:"15px"}}>What India Thinks - All rights reserved- Designed and Developed by AR Creation</p>
           <div className='social'>
             <BsFacebook className='icon' />
             <RiInstagramFill className='icon' />

@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { blog } from "../../assets/data/data";
 import { readMore } from "../../api";
 import { registerComment } from "../../api";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 export const DetailsPages = () => {
   const history = useHistory();
@@ -24,9 +24,7 @@ export const DetailsPages = () => {
       const result = await readMore(id);
       console.log(result);
       if (result.status) {
-        
       } else {
-
       }
       setStatus(result.data);
     } catch (error) {
@@ -39,30 +37,33 @@ export const DetailsPages = () => {
     event.preventDefault(); // Prevent the default form submission behavior
 
     try {
-      const formData = new FormData();      
-      formData.append('userid', localStorage.getItem('userId'));
-      formData.append('blogid', id);
-      formData.append('comment', comment);
+      const formData = new FormData();
+      formData.append("userid", localStorage.getItem("userId"));
+      formData.append("blogid", id);
+      formData.append("comment", comment);
 
       const result = await registerComment(formData);
       console.log(result);
       // localStorage.setItem('userid', result.userid);
-      if(result.status){
+      if (result.status) {
         // window.location.href = '/register/otp';
-        // if(value == true){
-          history.push('/');
+        console.log(value);
+        if (value) {
+          history.push("/blogs");
         } else {
-          history.push('/login');
+          history.push("/login");
         }
-        
-      
+      } else {
+        history.push("/login");
+      }
+
       // setStatus(result);
     } catch (error) {
-      history.push('/login');
-      console.error('Error registering user:', error);
+      history.push("/login");
+      console.error("Error registering user:", error);
       // setStatus('Error registering user.');
     }
-  }; 
+  };
 
   useEffect(() => {
     handleSubmit();
@@ -81,33 +82,40 @@ export const DetailsPages = () => {
       <section className="singlePage">
         <div className="container">
           {/* {Status.map((item) => ( */}
-            <div key={Status.id}>
-              <div className="left">
-                <img style={{ height: "70vh" }} src={Status.blogImage} alt="" />
-              </div>
-              <div className="right">            
-                <h1>{Status.blogTitle}</h1>
-                <Link to={`/detail/${Status.blogid}`}>Participate in the poll</Link>
-                {/* <p>{blogs.desc}</p> */}
-                <p>{Status.blogDescription}
-                </p>
-                <p>Author: Sunil</p>
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Comment</label>
-                  <textarea
-                    // style={{width:"30%"}}
-                    // class="form-control"
-                    className="comment-poll form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                    value={comment} onChange={(e) => setComment(e.target.value)}
-                  ></textarea>
-                </div>
-                <button onClick={handleComment} type="button" style={{}} class="btn btn-primary">
-                  Submit
-                </button>
-              </div>
+          <div key={Status.id}>
+            <div className="left">
+              <img className="blog-image" src={Status.blogImage} alt="" />
             </div>
+            <div className="right">
+              <h1>{Status.blogTitle}</h1>
+              <Link to={`/detail/${Status.blogid}`}>
+                Participate in the poll
+              </Link>
+              {/* <p>{blogs.desc}</p> */}
+              <p>{Status.blogDescription}</p>
+              <p>Author: Sunil</p>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comment</label>
+                <textarea
+                  // style={{width:"30%"}}
+                  // class="form-control"
+                  className="comment-poll form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+              </div>
+              <button
+                onClick={handleComment}
+                type="button"
+                style={{}}
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
           {/* ))} */}
         </div>
       </section>

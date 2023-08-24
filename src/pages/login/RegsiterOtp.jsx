@@ -1,6 +1,6 @@
 import React from "react"
 import "./login.css"
-import back from "../../assets/images/my-account.jpg"
+import back from "../../assets/images/register.jpeg"
 import { useState, useEffect } from 'react';
 import { registerOtp } from '../../api';
 import { useHistory } from 'react-router-dom';
@@ -48,20 +48,16 @@ export const RegsiterOtp = () => {
 
   return (
     <>
-      <section className='login'>
+      <section className='login mt-3'>
         <div className='container'>
-          <div className='backImg'>
-            <img src={back} alt='' />
-            <div className='text'>
-              <h3>Register</h3>
-              <h1>My account</h1>
-            </div>
+        <div>
+            <img src={back} alt='' className="back-ground-image"/>
           </div>
 
           <form onSubmit={handleSubmit}>
           <span>Enter Otp!</span>
-            <input type='text' placeholder="Otp" value={otp} onChange={(e) => setOtp(e.target.value)} required />
-            {inCorrect == true ? <><p style={{color:"red"}}>Invalid Otp</p></> : <></>}
+            <input type='text' placeholder="OTP" value={otp} onChange={(e) => setOtp(e.target.value)} required />
+            {inCorrect == true ? <><p style={{color:"red"}}>Invalid OTP</p></> : <></>}
             <button type="submit" className='button'>Proceed</button>
           </form>
         </div>

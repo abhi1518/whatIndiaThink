@@ -15,10 +15,14 @@
   font-weight: 500;
 }
 .singlePage p {
-  margin: 20px 0;
+  margin: 0px 0;
   font-size: 18px;
   line-height: 2;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
+}
+label {
+  display: inline-block;
+  margin-bottom: 0rem !important;
 }
 .singlePage .buttons {
   display: flex;
@@ -38,6 +42,9 @@
 .comment-poll{
   width: 30%;
 }
+.blog-image{
+  height: 70vh;
+}
 
 @media screen and (max-width: 768px) {
   
@@ -48,5 +55,8 @@
   }
   .comment-poll{
     width: 100%;
+  }
+  .blog-image{
+    height: 40vh;
   }
 }

@@ -58,7 +58,7 @@ export const Category = () => {
                   <img src={item.cover} alt='cover' />
                   <div className='overlay'>
                     <h4>{item.category}</h4>
-                    <p>{item.title}</p>
+                    {/* <p>{item.title}</p> */}
                   </div>
                 </div>
               </div>

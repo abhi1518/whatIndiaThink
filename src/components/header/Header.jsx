@@ -2,11 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import back from "../../assets/images/logo.png"
 
 export const Header = () => {
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const history = useHistory();
+
+  function closeNavbar() {
+    
+    const navbar = document.getElementById('myNavbar');
+    if (navbar.classList.contains('show')) {
+      navbar.classList.remove('show');
+    }
+  }
 
   // Load data from local storage when the component mounts
   useEffect(() => {
@@ -30,14 +39,33 @@ export const Header = () => {
   const navigateToOtherPage = () => {
     history.push("/login");
   };
+  function handleNavLinkClick() {
+    if (window.innerWidth <= 992) { // Adjust this breakpoint if needed
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      if (navbarToggler.classList.contains('show')) {
+        navbarToggler.click(); // Simulate clicking the navbar toggler to close the menu
+      }
+    }
+  }
   return (
     <>
       <header className="header">
         {" "}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-          <Link class="navbar-brand" to="/">
+        <nav id="myNavbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+          {/* <Link class="navbar-brand" to="/">
             What India Think
-          </Link>
+          </Link> */}
+          <div>
+          <div className='logo'>
+          <Link to="/" onClick={closeNavbar}>
+            <img src={back} alt='logo' width='70px' />
+            </Link>
+           
+          </div>
+          {/* <Link class="" to="/">
+            <img  src={back} alt='' className="logo"  />
+            </Link> */}
+          </div> 
           <button
             class="navbar-toggler"
             type="button"
@@ -52,24 +80,29 @@ export const Header = () => {
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto text-center">
+            <li class="nav-item">
+                <Link class="nav-link" to="/" data-toggle="collapse" data-target=".navbar-collapse.show">
+                  Home
+                </Link>
+              </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/about">
+                <Link class="nav-link" to="/about" data-toggle="collapse" data-target=".navbar-collapse.show">
                   About
                 </Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/blogs">
+                <Link class="nav-link" to="/blogs" data-toggle="collapse" data-target=".navbar-collapse.show">
                   Blogs
                 </Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/polles">
-                  Poll
+                <Link class="nav-link" to="/polls" data-toggle="collapse" data-target=".navbar-collapse.show">
+                  Polls
                 </Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/contact">
-                  Contact
+                <Link class="nav-link" to="/contact" data-toggle="collapse" data-target=".navbar-collapse.show">
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -78,8 +111,10 @@ export const Header = () => {
                 <>
                 {/* <p>Hi {name}</p> */}
                   <button
+                  data-toggle="collapse" data-target=".navbar-collapse.show"
                     class="btn btn-outline-success my-2 my-sm-0"
                     onClick={navigateToLogOut}
+                    onChange={closeNavbar}
                   >
                     Logout
                   </button>
@@ -88,14 +123,18 @@ export const Header = () => {
                 <>
                   {" "}
                   <button
+                  data-toggle="collapse" data-target=".navbar-collapse.show"
                     class="btn btn-outline-success my-2 mx-2 my-sm-0"
                     onClick={navigateToOtherPages}
+                    onChange={closeNavbar}
                   >
                     Register
                   </button>
                   <button
+                  data-toggle="collapse" data-target=".navbar-collapse.show"
                     class="btn btn-outline-success my-2 my-sm-0"
                     onClick={navigateToOtherPage}
+                    onChange={closeNavbar}
                   >
                     Login
                   </button>

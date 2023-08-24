@@ -70,6 +70,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
+}
+
+.hastag{
+  opacity: 1;
 }
 
 .popup-content {
@@ -77,6 +82,7 @@
   color: #fff;
   padding: 20px;
   border-radius: 4px;
+  opacity: 1 !important;
 }
 
 
@@ -86,6 +92,10 @@
  .caterogies{
   display: none;
  }
+ .hastag{
+  /* opacity: 0.5 !important; */
+  color:black !important;
+}
  .blog {
   margin: 50px 0;
   width: 100%;
@@ -93,7 +103,7 @@
 .floating-button {
   display: block;
   position: fixed; /* or 'absolute' if preferred */
-  bottom: 20px;
+  top: 90px;
   right: 20px;
   width: 60px;
   height: 60px;

@@ -160,6 +160,21 @@ export const registerOtp = async (formData) => {
     }
   };
 
+  export const blogFilter = async (formData) => {
+    try {
+      const requestOptions = {
+        method: 'post',
+        url: `${API_BASE_URL}/Filter/filtercategory`,
+        data: formData,
+      };
+  
+      const response = await axios(requestOptions);
+      return handleResponse(response);
+    } catch (error) {
+      throw new Error('Error registering user.');
+    }
+  };
+
   export const blogGet = async () => {
     try {
       const requestOptions = {

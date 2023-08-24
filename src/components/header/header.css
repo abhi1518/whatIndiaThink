@@ -73,6 +73,10 @@ header.active {
   z-index: 9999;
   background: #fff;
 }
+.logo{
+  height: 13% !important;
+  width: 13% !important;
+}
 @media screen and (max-width: 768px) {
   header .search {
     display: none;

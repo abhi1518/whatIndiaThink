@@ -1,0 +1,73 @@
+.login {
+  position: relative;
+  margin-bottom: 50px;
+}
+.about-content{
+  margin-top: 0px;
+}
+.login .backImg {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+}
+.login .backImg img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+.login .text {
+  position: absolute;
+  top: 75%;
+  left: 45%;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+.login .text h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.login .text h1 {
+  font-size: 40px;
+}
+
+@media (max-width: 480px) {
+  .login .backImg {
+    width: 100%;
+    height: 25vh;
+    position: relative;
+  }
+  .login .backImg img {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+  }
+  .login .text {
+    position: absolute;
+    top: 75%;
+    left: 25% !important;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+  }
+  .login .text {
+    position: absolute;
+    top: 70%;
+    left: 23%;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+  }
+  .login {
+    position: relative;
+    margin-bottom: 0px;
+  }
+  form{
+    margin-top: 25px !important;
+  }
+  .about-content{
+    margin-top: 25px !important;
+  }
+}
+
+

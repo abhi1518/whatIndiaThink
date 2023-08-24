@@ -9,37 +9,14 @@ export const Home = () => {
     history.push("/blogs");
   };
   const navigateToOtherPages = () => {
-    history.push("/polles");
+    history.push("/polls");
   };
   return (
     <>
       <Category />
 
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <h1 className="text-center mt-5 mb-5">What India Thinks?</h1>
-            <p>
-              At WhatIndiaThinks, we believe that every individual's voice
-              deserves to be heard, and that's precisely what we stand for. Our
-              platform is dedicated to providing a space where you can stay
-              informed about current important issues and actively participate
-              in shaping public opinion through unbiased opinion polls and
-              insightful blogs.
-            </p>
-            <p>
-              In today's world, it's crucial to have a reliable source of
-              information and a place to express your thoughts freely. We
-              understand that mainstream media often struggles to remain
-              impartial, leaving people searching for a trustworthy platform to
-              share their views on government actions and other critical
-              matters.{" "}
-            </p>
-          </div>
-        </div>
-      </div>
       <div
-        className="text-center mt-5 mb-5 pb-5 pt-5"
+        className="text-center mt-3 mb-3 pb-4 pt-4"
         style={{ display: "flex", margin: "auto" }}
       >
         <button
@@ -54,12 +31,36 @@ export const Home = () => {
         <button
           type="button"
           onClick={navigateToOtherPages}
-          style={{ justifyContent: "center", margin: "auto", width: "50%" }}
-          class="btn btn-secondary btn-lg btn-block"
+          style={{ justifyContent: "center", margin: "auto", width: "50%", background:"lightgreen" }}
+          class="btn btn-lg btn-block"
         >
-          Poll
+          Polls
         </button>
       </div>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h1 className="text-center mb-2">What India Thinks !</h1>
+            <p>
+              At WhatIndiaThinks, we believe that every individual's voice
+              deserves to be heard, and that's precisely what we stand for. Our
+              platform is dedicated to providing a space where you can stay
+              informed about current important issues and actively participate
+              in shaping public opinion through unbiased opinion polls and
+              insightful blogs.
+            </p>
+            <p className="mb-5">
+              In today's world, it's crucial to have a reliable source of
+              information and a place to express your thoughts freely. We
+              understand that mainstream media often struggles to remain
+              impartial, leaving people searching for a trustworthy platform to
+              share their views on government actions and other critical
+              matters.{" "}
+            </p>
+          </div>
+        </div>
+      </div>
+      
     </>
   );
 };

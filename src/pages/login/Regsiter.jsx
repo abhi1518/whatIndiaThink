@@ -1,6 +1,6 @@
 import React from "react"
 import "./login.css"
-import back from "../../assets/images/my-account.jpg"
+import back from "../../assets/images/register.jpeg"
 import { Router } from 'react-router-dom';
 import { useState } from 'react';
 import { registerUser } from '../../api';
@@ -44,14 +44,10 @@ export const Regsiter = () => {
 
   return (
     <>
-      <section className='login'>
+      <section className='login mt-3'>
         <div className='container'>
-          <div className='backImg'>
-            <img src={back} alt='' />
-            <div className='text'>
-              <h3>Register</h3>
-              <h1>My account</h1>
-            </div>
+          <div>
+            <img  src={back} alt='' className="mt-1 back-ground-image" />
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -61,8 +57,8 @@ export const Regsiter = () => {
             <input type='tel' placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)}  required />
             <span>Email</span>
             <input type='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <span>Address</span>
-            <input type='text' placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} required />
+            <span>Pin Code</span>
+            <input type='text' placeholder="Pin Code" value={address} onChange={(e) => setAddress(e.target.value)} required />
            
             <button type="submit" className='button'>Proceed</button>
           </form>
