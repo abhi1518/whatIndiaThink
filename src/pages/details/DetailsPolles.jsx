@@ -19,6 +19,7 @@ export const DetailsPolles = () => {
   const [value, setValue] = useState("");
   const [inCorrect, setIncorreact] = useState(false);
   const [blogId, setBlogId] = useState("");
+  const [option, setOption] = useState("");
   console.log(id);
 
   const handleSubmit = async (event) => {
@@ -46,13 +47,16 @@ export const DetailsPolles = () => {
       formData.append("blogid", id);
       formData.append("userid", localStorage.getItem("userId"));
       formData.append("comment", comment);
+      formData.append("name", localStorage.getItem("name"));
+      formData.append("option", option);
+      formData.append("question", Question);
 
       const result = await registerVote(formData);
-      // console.log(result.blogid);
+      console.log(result);
       
       if (result.status) {
         if (value) {
-          history.push("/polles");
+          history.push("/polls");
         } else {
           history.push("/login");
         }
@@ -64,8 +68,6 @@ export const DetailsPolles = () => {
           history.push("/login");
         }
         
-        // history.push("/login");
-        
       }
     } catch (error) {
       history.push("/login");
@@ -75,9 +77,12 @@ export const DetailsPolles = () => {
   };
   const [blogs, setBlogs] = useState(null);
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-    console.log(event.target.value);
+  const handleOptionChange = event => {
+    const selectedId = parseInt(event.target.value, 10); // Convert value to integer
+    const selectedBlogOption = Status.find(option => option.id === selectedId).blogoption;
+    setSelectedOption(selectedId);
+    setOption(selectedBlogOption); // Update the selected option in state
+    console.log(`Selected ID: ${selectedId}, Selected Option: ${selectedBlogOption}`);
   };
 
   useEffect(() => {
@@ -97,17 +102,11 @@ export const DetailsPolles = () => {
       {Status ? (
         <section className="singlePage">
           <div className="container">
-            {/* <div className='left'>
-              <img src={blogs.cover} alt='' />
-            </div> */}
             <div>
               <h1>{Question}</h1>
               <Link to={`/details/${blogId}`}>
               Read more on it
               </Link>
-              {/* <Link to={`/details/${item.blogid}`} className="link">
-               Read Blog For This Poll
-              </Link> */}
               {Status.map((item) => (
                 <>
                   <div style={{ display: "flex", flexDirection: "column" }}>

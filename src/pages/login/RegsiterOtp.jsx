@@ -55,7 +55,7 @@ export const RegsiterOtp = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-          <span>Enter Otp!</span>
+          <span>Enter OTP</span>
             <input type='text' placeholder="OTP" value={otp} onChange={(e) => setOtp(e.target.value)} required />
             {inCorrect == true ? <><p style={{color:"red"}}>Invalid OTP</p></> : <></>}
             <button type="submit" className='button'>Proceed</button>

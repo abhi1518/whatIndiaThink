@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import "./details.css";
 import "../../components/header/header.css";
-import img from "../../assets/images/b5.jpg";
-import { BsPencilSquare } from "react-icons/bs";
-import { AiOutlineDelete } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { blog } from "../../assets/data/data";
 import { readMore } from "../../api";
 import { registerComment } from "../../api";
 import { useHistory } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export const DetailsPages = () => {
   const history = useHistory();
@@ -18,6 +17,8 @@ export const DetailsPages = () => {
   const [Status, setStatus] = useState([]);
   const [comment, setComment] = useState("");
   const [value, setValue] = useState("");
+  const [inCorrect, setIncorreact] = useState(false);
+  const [alreadyComment, setAlreadyComment] = useState(false);
 
   const handleSubmit = async (event) => {
     try {
@@ -25,6 +26,7 @@ export const DetailsPages = () => {
       console.log(result);
       if (result.status) {
       } else {
+        // setAlreadyComment(true);
       }
       setStatus(result.data);
     } catch (error) {
@@ -34,34 +36,42 @@ export const DetailsPages = () => {
   };
 
   const handleComment = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-
+    event.preventDefault();
     try {
       const formData = new FormData();
       formData.append("userid", localStorage.getItem("userId"));
       formData.append("blogid", id);
       formData.append("comment", comment);
+      formData.append("name", localStorage.getItem("name"));
 
       const result = await registerComment(formData);
-      console.log(result);
-      // localStorage.setItem('userid', result.userid);
       if (result.status) {
-        // window.location.href = '/register/otp';
         console.log(value);
-        if (value) {
-          history.push("/blogs");
-        } else {
+        if (value) {          
+            history.push("/blogs");        
+        } else {          
           history.push("/login");
         }
       } else {
+        if(value){
+          // if (comment == null) {
+            setAlreadyComment(true);
+          // } else if (comment != null) {
+          //   setIncorreact(true);            
+          // } else {
+          //   history.push("/login");
+          // }
+        } else {
+          history.push("/login");
+        }        
+      }
+    } catch (error) {
+      if (value) {
+        setIncorreact(true);
+      } else {
         history.push("/login");
       }
-
-      // setStatus(result);
-    } catch (error) {
-      history.push("/login");
       console.error("Error registering user:", error);
-      // setStatus('Error registering user.');
     }
   };
 
@@ -81,7 +91,6 @@ export const DetailsPages = () => {
     <>
       <section className="singlePage">
         <div className="container">
-          {/* {Status.map((item) => ( */}
           <div key={Status.id}>
             <div className="left">
               <img className="blog-image" src={Status.blogImage} alt="" />
@@ -91,21 +100,20 @@ export const DetailsPages = () => {
               <Link to={`/detail/${Status.blogid}`}>
                 Participate in the poll
               </Link>
-              {/* <p>{blogs.desc}</p> */}
-              <p>{Status.blogDescription}</p>
-              <p>Author: Sunil</p>
+              <div dangerouslySetInnerHTML={{ __html: Status.blogDescription }}></div> 
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Comment</label>
                 <textarea
-                  // style={{width:"30%"}}
-                  // class="form-control"
                   className="comment-poll form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
                   value={comment}
+                  required
                   onChange={(e) => setComment(e.target.value)}
                 ></textarea>
               </div>
+              {alreadyComment == true ? <><p style={{color:"red"}}>You have already commented on this blog</p></> : <></>}
+              {inCorrect == true ? <><p style={{color:"red"}}>Please write comment</p></> : <></>}
               <button
                 onClick={handleComment}
                 type="button"
@@ -116,7 +124,6 @@ export const DetailsPages = () => {
               </button>
             </div>
           </div>
-          {/* ))} */}
         </div>
       </section>
     </>

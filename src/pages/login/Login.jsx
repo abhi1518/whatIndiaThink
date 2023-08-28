@@ -77,12 +77,8 @@ export const Login = () => {
             {inCorrect == true ? <><p style={{color:"red"}}>Email or Password not match</p></> : <></>}
             {/* <p>kjkjjn</p> */}
             <Link to="/forget/otp" className="text-right">Forgot Password</Link>
-            <button type="submit" className={` button mt-5 loading-button ${loading ? 'loading' : ''}`} disabled={loading}>
-            {loading ? (
-          <TailSpin className="text-center" style={{margin:"200px" , paddingLeft:"100px"}} color="#FFFFFF" height={20} width={20}  />
-        ) : (
-          'Log in'
-        )}</button>
+            <button type="submit" className="button mt-5">Log in
+            </button>
           </form>
         </div>
       </section>
